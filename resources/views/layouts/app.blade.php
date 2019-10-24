@@ -9,10 +9,10 @@
     <meta name="description" content="Baca Al Quran Online lengkap dengan latin dan terjemah Indonesia. Website cepat, ringan dan hemat kuota.">
     <meta property="og:title" content="Quran Online lengkap dengan bacaan arab, latin & terjemah Indonesia.">
     <meta property="og:description" content="Baca Al Quran Online lengkap dengan latin dan terjemah Indonesia. Website cepat, ringan dan hemat kuota.">
-    <meta property="og:url" content="https://litequran.net">
-    <meta name="google-site-verification" content="W2sWlu591RHe7pzjj-fWdbeOYjZrUDPp6LqDJuKSDWo" />
+    <meta property="og:url" content="https://quran.dibumi.com">
     <meta name="google" content="notranslate" />
-    <link rel="shortcut icon" href="assets/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" integrity="sha256-WAgYcAck1C1/zEl5sBl5cfyhxtLgKGdpI3oKyJffVRI=" crossorigin="anonymous" />
     <style>
         body, head, html {
@@ -471,7 +471,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 5px 0px 0px 0px;
+            padding: 5px 0px 0px 5%;
             width: 100%;
             background: #e3e3e3;
             position: fixed;
@@ -480,7 +480,6 @@
         }
     </style>
 
-    @laravelPWA
     @stack('head')
 </head>
 <body>
@@ -488,19 +487,23 @@
     <div class="list">
         <div class="align-center">
             <h1 style="font-family: Raleway !important;"><a href="{{ route('surah.index') }}">AL-QURAN</a> </h1>
-            <p>Al Quran Translation & Tafsir</p>
+            <p>Al Quran Terjemahan & Tafsir Bahasa Indonesia</p>
         </div>
         <div class="search">
-            <form>
+            <form action="{{ route('surah.index') }}" method="get">
                 <div class="row">
                     <div class="eight columns">
-                        <input class="u-full-width" type="text" placeholder="search">
+                        <input class="u-full-width" type="text" name="q" placeholder="search">
                     </div>
                     <div class="four columns">
                         <input class="button-primary u-full-width" type="submit" value="Submit">
                     </div>
                 </div>
             </form>
+            @if(\Illuminate\Support\Facades\Request::has('q'))
+                <script async src="https://cse.google.com/cse.js?cx=001126782360084613653:ynw6ibnnhcq"></script>
+                <div class="gcse-searchresults-only"></div>
+            @endif
         </div>
     </div>
 </div>
@@ -514,8 +517,25 @@
             <br>
             Sumber data berasal dari kementrian agama, tanzil, quran cloud, ibacors.
         </p>
+        <p>
+            Jika ditemukan kesalahan, mohon menghubungi fatkulnurk@gmail.com agar bisa diperbaiki.
+        </p>
     </div>
 </div>
 @stack('footer')
+<script>
+    // pwa
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/serviceworker.js').then(function(registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function(err) {
+                // registration failed :(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+</script>
 </body>
 </html>

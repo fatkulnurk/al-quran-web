@@ -10,8 +10,8 @@
         {!! $surah->description_indonesia !!}
     </div>
     <div class="fixed-bottom">
-        <strong>Goto Verse:</strong>
-        <select class="select">
+        <strong>Pergi Ke ayat:</strong>
+        <select class="select" onchange="goTo(this.value)">
             @foreach(optional($surah)->ayah as $data)
                 <option value="{{ $data->number }}">{{ $data->number }}</option>
             @endforeach
@@ -20,7 +20,7 @@
     <div class="list">
         <table class="u-full-width">
             @foreach(optional($surah)->ayah as $data)
-                <tr>
+                <tr id="ayat-ke-{{$data->number}}">
                     <td class="valign-top">
                         [<strong>{{ $data->number }}</strong>]
                     </td>
@@ -33,3 +33,12 @@
         </table>
     </div>
 @endsection
+
+@push('footer')
+    <script>
+        function goTo(number) {
+            const element = document.getElementById("ayat-ke-" + number);
+            element.scrollIntoView();
+        }
+    </script>
+@endpush

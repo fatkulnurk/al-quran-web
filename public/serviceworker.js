@@ -1,8 +1,6 @@
-var staticCacheName = "pwa-v" + new Date().getTime();
-var filesToCache = [
-    '/offline',
-    '/css/app.css',
-    '/js/app.js',
+const CACHE_NAME = 'al-quran';
+const urlsToCache = [
+    '/',
     '/images/icons/icon-72x72.png',
     '/images/icons/icon-96x96.png',
     '/images/icons/icon-128x128.png',
@@ -13,40 +11,57 @@ var filesToCache = [
     '/images/icons/icon-512x512.png',
 ];
 
-// Cache on install
-self.addEventListener("install", event => {
-    this.skipWaiting();
-    event.waitUntil(
-        caches.open(staticCacheName)
-            .then(cache => {
-                return cache.addAll(filesToCache);
-            })
-    )
-});
 
-// Clear cache on activate
-self.addEventListener('activate', event => {
+self.addEventListener('install', function(event) {
+    // Perform install steps
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames
-                    .filter(cacheName => (cacheName.startsWith("pwa-")))
-                    .filter(cacheName => (cacheName !== staticCacheName))
-                    .map(cacheName => caches.delete(cacheName))
-            );
-        })
+        caches.open(CACHE_NAME)
+            .then(function(cache) {
+                console.log('in install service worker... cache opened');
+                return cache.addAll(urlsToCache);
+            })
     );
 });
 
-// Serve from Cache
-self.addEventListener("fetch", event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                return response || fetch(event.request);
+
+self.addEventListener('fetch', function(event) {
+    let request = event.request;
+    let url = new URL(request.url);
+
+    // memisahkan request api dan internal
+    if(url.origin === location.origin){
+        event.respondWith(
+            caches.match(request).then(function(response){
+                return response || fetch(request)
             })
-            .catch(() => {
-                return caches.match('offline');
+        );
+    }else{
+        event.respondWith(
+            caches.open('products-cache').then(function(cache){
+                return fetch(request).then(function(liveResponse){
+                    cache.put(request,liveResponse.clone());
+                    return liveResponse
+                }).catch(function(){
+                    return caches.match(request).then(function(response){
+                        if(response) return response;
+                        return caches.match('/fallback.json')
+                    })
+                })
             })
-    )
+        )
+    }
+});
+
+self.addEventListener('activate', function(event) {
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function(cacheName){
+                    return cacheName !== CACHE_NAME
+                }).map(function(cacheName){
+                    return caches.delete(cacheName)
+                })
+            );
+        })
+    );
 });

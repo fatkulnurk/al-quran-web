@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="22a1f8fd-f8f1-4abc-bfe7-aa9ea4708fdb" name="Quran Dibumi" url="http://ftp.dibumi.com">
+        <fileTransfer host="ftp.dibumi.com" port="21" rootFolder="/laravel/quran">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
