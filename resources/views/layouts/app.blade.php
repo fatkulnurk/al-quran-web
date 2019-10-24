@@ -5,9 +5,10 @@
     <meta content="follow,index" name="robots">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta charset="utf-8" />
+    <meta name="google-site-verification" content="FSVj8qN39rl9nrHqdZRH18waP9sN-76mJiHYGVmwAak" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Baca Al Quran Online lengkap dengan latin dan terjemah Indonesia. Website cepat, ringan dan hemat kuota.">
-    <meta property="og:title" content="Quran Online lengkap dengan bacaan arab, latin & terjemah Indonesia.">
+    <meta property="og:title" content="{{ getenv('APP_NAME') }} - @yield('title')">
     <meta property="og:description" content="Baca Al Quran Online lengkap dengan latin dan terjemah Indonesia. Website cepat, ringan dan hemat kuota.">
     <meta property="og:url" content="https://quran.dibumi.com">
     <meta name="google" content="notranslate" />

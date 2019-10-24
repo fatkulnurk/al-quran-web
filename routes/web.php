@@ -14,3 +14,4 @@
 Route::get('/', 'SurahController@index')->name('surah.index');
 Route::get('/surah-{surah}', 'SurahController@show')->name('surah.show');
 Route::get('/surah-{surah}/ayah-{ayah}', 'AyahController@show')->name('ayah.show');
+Route::get('/sitemap.xml', 'SitemapController@index')->name('sitemap');

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Surat ' . $surah->name_alphabet . ' ' . $surah->name_arabic)
+@section('title', 'Surat ' . $surah->name_alphabet . ' (' . $surah->name_arabic . ') Terjemahan Bahasa Indonesia')
 
 @section('content')
     <div class="list align-center">

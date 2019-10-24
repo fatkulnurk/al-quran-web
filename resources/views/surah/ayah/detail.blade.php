@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Surat ' . $ayah->surah->name_alphabet . ' ayat ke ' . $ayah->number)
+@section('title', 'Surat ' . $ayah->surah->name_alphabet . ' ayat ke ' . $ayah->number . ' Terjemahan Bahasa Indonesia')
 
 @section('content')
     <div class="list align-center">
@@ -20,13 +20,40 @@
         </table>
     </div>
     <div class="list">
-        <h5>Translation: </h5>
+        <h5>Terjemahan dan Tafsir: </h5>
     </div>
-
     @foreach($ayah->ayahTranslation as $translation)
         <div class="list">
-            {{ $translation->translation->name }} (<b>{{ $translation->translation->translator }}</b>) <br>
+            <b>Penerjemah / Tafsir</b>:<br> {{ $translation->translation->name }} (<b>{{ $translation->translation->translator }}</b>) <br>
             {{ $translation->content }}
         </div>
     @endforeach
+
+    <div class="list">
+        <h5>Komentar & Diskusi: </h5>
+    </div>
+    <div class="list">
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://quran-translation.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 @endsection
+@push('footer')
+    <script id="dsq-count-scr" src="//quran-translation.disqus.com/count.js" async></script>
+@endpush
