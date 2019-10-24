@@ -18,12 +18,18 @@ class Surah extends Model
         'number_of_verses',
         'relevation_number',
         'relevation_type',
-        'description_indonesia'
+        'description_indonesia',
+        'slug'
     ];
 
 
     public function ayah()
     {
         return $this->hasMany(Ayah::class, 'surah_id', 'id');
+    }
+
+    public function ayahTranslation()
+    {
+        return $this->hasMany(AyahTranslation::class, 'surah_id', 'id');
     }
 }

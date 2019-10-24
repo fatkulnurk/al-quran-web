@@ -24,21 +24,31 @@ class AyahSeeder extends Seeder
         $surahAll = \App\Model\Surah::all();
 
 
+        $j = 0;
         foreach ($surahAll as $surah) {
 
             $ayahData = $this->getData($surah->id);
 
+            $i = 0;
             foreach ($ayahData as $data) {
+                if ($i == 0 && $j != 0 ) {
+                    $arabic = \Illuminate\Support\Str::replaceFirst('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '', $data['ar']);
+                } else {
+                    $arabic = $data['ar'];
+                }
+
                 $ayah = new \App\Model\Ayah([
                     'number' => $data['nomor'],
-                    'arabic' => $data['ar'],
+                    'arabic' => $arabic,
                     'alphabet' => $data['tr']
                 ]);
 
                 $surah->ayah()->Save($ayah);
+
+                $i++;
             }
 
-
+            $j++;
         }
     }
 }

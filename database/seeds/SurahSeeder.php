@@ -43,7 +43,8 @@ class SurahSeeder extends Seeder
                 'number_of_verses' => $surah['rukuk'], // rukuk
                 'relevation_number' => $surah['urut'], // pewahyuan
                 'relevation_type' => $type,
-                'description_indonesia' => $surah['keterangan']
+                'description_indonesia' => $surah['keterangan'],
+                'slug' => \Illuminate\Support\Str::slug($surah['nama'])
             ]);
 
 

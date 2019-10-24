@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Ayah;
+use App\Model\AyahTranslation;
 use App\Model\Surah;
 use Illuminate\Http\Request;
 
@@ -15,10 +16,10 @@ class SurahController extends Controller
         return view('surah.home', compact('surah'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $surah = Surah::with('ayah')
-            ->where('id', $id)
+        $surah = Surah::with('ayah.ayahTranslation.translation')
+            ->where('slug', $slug)
             ->first();
 
         return view('surah.detail', compact('surah'));

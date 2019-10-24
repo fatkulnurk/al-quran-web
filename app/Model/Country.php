@@ -14,4 +14,9 @@ class Country extends Model
         'alpha-2',
         'alpha-3'
     ];
+
+    public function translation()
+    {
+        return $this->hasMany(Translation::class, 'country_id', 'id');
+    }
 }

@@ -19,4 +19,9 @@ class Ayah extends Model
     {
         return $this->belongsTo(Surah::class, 'surah_id', 'id');
     }
+
+    public function ayahTranslation()
+    {
+        return $this->hasMany(AyahTranslation::class, 'ayah_id', 'id');
+    }
 }

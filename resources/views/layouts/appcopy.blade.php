@@ -456,31 +456,8 @@
         .valign-bottom {
             vertical-align: bottom;
         }
-        .font-color-black {
-            color: black;
-        }
-        .color-black {
-            background: black;
-        }
-        .clear-decoration {
-            text-decoration: none;
-        }
-
-        .fixed-bottom {
-            height: 45px !important;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 5px 0px 0px 0px;
-            width: 100%;
-            background: #e3e3e3;
-            position: fixed;
-            z-index: 5;
-            vertical-align: bottom;
-        }
     </style>
 
-    @laravelPWA
     @stack('head')
 </head>
 <body>

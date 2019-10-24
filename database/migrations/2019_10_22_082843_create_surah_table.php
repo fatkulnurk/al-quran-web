@@ -25,6 +25,7 @@ class CreateSurahTable extends Migration
             $table->string('relevation_number');
             $table->string('relevation_type');
             $table->text('description_indonesia');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

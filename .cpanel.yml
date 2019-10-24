@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/dibumico/public_html/
+    - /bin/cp -R .env.example $DEPLOYPATH/.env
+    - /bin/php artisan migrate:fresh --seed
