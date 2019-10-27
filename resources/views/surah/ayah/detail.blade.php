@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Surat ' . $ayah->surah->name_alphabet . ' ayat ke ' . $ayah->number . ' Terjemahan Bahasa Indonesia')
+@section('title', 'Surat ' . $ayah->surah->name_alphabet . ' ayat ke ' . $ayah->number . ' Tafsir dan Terjemahan Bahasa Indonesia')
 
 @section('content')
     <div class="list align-center">
-        <h1><a href="{{ route('surah.show', $ayah->surah->slug) }}">Surat {{ $ayah->surah->name_alphabet }}</a> ayat ke {{ $ayah->number }}</h1>
+        <h1><a href="{{ route('surah.show', $ayah->surah->slug) }}" title="surat {{$ayah->surah->name_alphabet}} terjemahan dan tafsir">Surat {{ $ayah->surah->name_alphabet }}</a> ayat ke {{ $ayah->number }}</h1>
     </div>
     <div class="list">
         <table class="u-full-width">
@@ -14,24 +14,24 @@
                 </td>
                 <td>
                     <h2 class="rtl align-right">{{ $ayah->arabic }}</h2>
-                    <p>{!! $ayah->alphabet !!}</p>
                 </td>
             </tr>
         </table>
+        <p>{!! $ayah->alphabet !!}</p>
     </div>
     <div class="list">
-        <h5>Terjemahan dan Tafsir: </h5>
+        <h5>Terjemahan dan Tafsir Surat {{ $ayah->surah->name_alphabet }} ayat ke {{ $ayah->number }}</h5>
     </div>
     @foreach($ayah->ayahTranslation as $translation)
         <div class="list">
-            <b>Penerjemah / Tafsir</b>:<br> {{ $translation->translation->name }} (<b>{{ $translation->translation->translator }}</b>) <br>
-            {{ $translation->content }}
+            <ul>
+                <li><b>Tafsir {{ $translation->translation->name }} (<i>{{ $translation->translation->translator }}</i>) surat {{ $ayah->surah->name_alphabet }} ayat ke {{ $ayah->number }}</b></li>
+                <li>{{ $translation->content }}</li>
+            </ul>
+
         </div>
     @endforeach
 
-    <div class="list">
-        <h5>Komentar & Diskusi: </h5>
-    </div>
     <div class="list">
         <div id="disqus_thread"></div>
         <script>

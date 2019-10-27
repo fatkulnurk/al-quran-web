@@ -18,7 +18,7 @@ class SurahController extends Controller
 
     public function show($slug)
     {
-        $surah = Surah::with('ayah.ayahTranslation.translation')
+        $surah = Surah::with('ayah.ayahTranslation')
             ->where('slug', $slug)
             ->first();
 

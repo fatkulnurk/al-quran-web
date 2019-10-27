@@ -16,9 +16,20 @@ class AyahController extends Controller
             })
             ->where('number', $ayahNumber)
             ->first();
-
-//        return $ayah;
-
         return view('surah.ayah.detail', compact('ayah'));
+    }
+
+    public function range($surahSlug, $ayahNumberFrom, $ayahNumberEnd)
+    {
+        $surah = Surah::where('slug', $surahSlug)->first();
+        $ayah = Ayah::with('ayahTranslation')
+            ->whereHas('surah', function ($query) use ($surahSlug){
+                $query->where('slug', $surahSlug);
+            })
+            ->where('number', '>=', $ayahNumberFrom)
+            ->where('number', '<=', $ayahNumberEnd)
+            ->get();
+
+        return view('surah.ayah.range', compact('ayah', 'surah'));
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Surat ' . $surah->name_alphabet . ' (' . $surah->name_arabic . ') Terjemahan Bahasa Indonesia')
+@section('title', 'Surat ' . $surah->name_alphabet . ' (' . $surah->name_arabic . ') latin dan Terjemahan Bahasa Indonesia')
 
 @section('content')
     <div class="list align-center">
@@ -25,11 +25,53 @@
                         [<strong>{{ $data->number }}</strong>]
                     </td>
                     <td>
-                        <h2 class="rtl align-right"><a href="{{ route('ayah.show', [$surah->slug, $data->number]) }}"> {{ $data->arabic }} </a></h2>
+                        <h2 class="rtl align-right"><a href="{{ route('ayah.show', [$surah->slug, $data->number]) }}" title="surat {{ $surah->name_alphabet }} ayat ke {{ $data->number }}"> {{ $data->arabic }} </a></h2>
                         <p>{!! $data->alphabet !!}</p>
+                        @foreach($data->ayahTranslation as $translation)
+                            @if($loop->first)
+                                <p>{{ $translation->content }}</p>
+                            @endif
+                        @endforeach
                     </td>
                 </tr>
             @endforeach
+        </table>
+    </div>
+    <div class="list">
+        <h3>Keterangan Surat {{ $surah->name_alphabet }}</h3>
+        <table class="u-full-width">
+            <thead>
+            <tr>
+                <th>Info</th>
+                <th>Keterangan</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Nama Surat</td>
+                <td>{{ $surah->name_alphabet }}</td>
+            </tr>
+            <tr>
+                <td>Nama Surat (Arabic)</td>
+                <td class="rtl">{{ $surah->name_arabic }}</td>
+            </tr>
+            <tr>
+                <td>Arti</td>
+                <td>{{ $surah->name_indonesia }}</td>
+            </tr>
+            <tr>
+                <td>Surat No</td>
+                <td>{{ $surah->number_of_surah }}</td>
+            </tr>
+            <tr>
+                <td>Jumlah Ayat</td>
+                <td>{{ $surah->number_of_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Tempat diturunkan</td>
+                <td>{{ $surah->relevation_type }}</td>
+            </tr>
+            </tbody>
         </table>
     </div>
 @endsection
