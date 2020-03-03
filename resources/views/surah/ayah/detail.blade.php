@@ -21,6 +21,9 @@
     </div>
     <div class="list">
         <h5>Terjemahan dan Tafsir Surat {{ $ayah->surah->name_alphabet }} ayat ke {{ $ayah->number }}</h5>
+        <p>
+            <img class="img-full" src="http://www.everyayah.com/data/quranpngs/{{ $ayah->surah->number_of_surah }}_{{ $ayah->number }}.png" alt="Tafsir Surat {{ $ayah->surah->name_alphabet }} ayat ke {{ $ayah->number }}" rel="nofollow">
+        </p>
     </div>
     @foreach($ayah->ayahTranslation as $translation)
         <div class="list">
