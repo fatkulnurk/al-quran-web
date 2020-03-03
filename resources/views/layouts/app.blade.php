@@ -6,6 +6,8 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta charset="utf-8" />
     <meta name="google-site-verification" content="6DhVtb5OFQfC0KguuFoCdNecJgN2fKbK4PI7SFFPzmw" />
+    <meta content='Indonesia' name='geo.placename'/>
+    <meta content='id' name='geo.country'/>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="msvalidate.01" content="22BE01348A583F2C42BD6C04965A1F1F" />
     <meta name="title" content="@yield('title')">
