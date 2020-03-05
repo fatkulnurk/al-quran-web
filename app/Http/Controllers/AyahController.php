@@ -16,7 +16,9 @@ class AyahController extends Controller
             })
             ->where('number', $ayahNumber)
             ->first();
-        return view('surah.ayah.detail', compact('ayah'));
+
+        $surahAll = Surah::all();
+        return view('surah.ayah.detail', compact('ayah', 'surahAll'));
     }
 
     public function range($surahSlug, $ayahNumberFrom, $ayahNumberEnd)

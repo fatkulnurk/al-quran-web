@@ -56,6 +56,15 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
+
+    <div class="list">
+        <h3>Daftar Surat</h3>
+        <ul>
+            @foreach($surahAll as $data)
+                <li><a href="{{ route('surah.show', $data->slug) }}" title="surat {{ $data->name_alphabet }} Terjemahan bahasa indonesia">{{ $data->name_alphabet }}</a> ({{ $data->name_indonesia }})</li>
+            @endforeach
+        </ul>
+    </div>
 @endsection
 @push('footer')
     <script id="dsq-count-scr" src="//quran-translation.disqus.com/count.js" async></script>

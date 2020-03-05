@@ -22,6 +22,8 @@ class SurahController extends Controller
             ->where('slug', $slug)
             ->first();
 
-        return view('surah.detail', compact('surah'));
+        $surahAll = Surah::all();
+
+        return view('surah.detail', compact('surah', 'surahAll'));
     }
 }

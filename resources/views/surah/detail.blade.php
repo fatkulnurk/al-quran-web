@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="list align-center">
-        <h1>Surat {{ $surah->name_alphabet }} - {{ $surah->name_arabic }}</h1>
+        <h1><a href="{{ request()->getUri() }}" title="Surat {{ $surah->name_alphabet }} Terjemahan Bahasa Indonesia">Surat {{ $surah->name_alphabet }}</a> - {{ $surah->name_arabic }}</h1>
     </div>
     <div class="list">
         {!! $surah->description_indonesia !!}
@@ -49,7 +49,7 @@
             <tbody>
             <tr>
                 <td>Nama Surat</td>
-                <td>{{ $surah->name_alphabet }}</td>
+                <td><a href="{{ request()->getUri() }}" title="Surat {{ $surah->name_alphabet }} Terjemahan Bahasa Indonesia">{{ $surah->name_alphabet }}</a></td>
             </tr>
             <tr>
                 <td>Nama Surat (Arabic)</td>
@@ -73,6 +73,15 @@
             </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="list">
+        <h3>Daftar Surat</h3>
+        <ul>
+            @foreach($surahAll as $data)
+                <li><a href="{{ route('surah.show', $data->slug) }}" title="surat {{ $data->name_alphabet }} Terjemahan bahasa indonesia">{{ $data->name_alphabet }}</a> ({{ $data->name_indonesia }})</li>
+            @endforeach
+        </ul>
     </div>
 @endsection
 

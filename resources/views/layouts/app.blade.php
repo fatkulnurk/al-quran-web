@@ -569,16 +569,22 @@
 </div>
 <div class="container">
     <div class="list">
-        <p>Baca Al Quran Online, Al Quran 30 juz lengkap, Al Quran latin dan terjemah, Al Quran bahasa Indonesia, Al Quran Terjemahan kementrian agama, Al Quran dilengkapi dengan tafsir dari beberapa ulama seperti Tafsir Jalalayn dan Tafsir Quraish Shihab.</p>
+        <p>
+            <a href="/" title="Al Quran Terjemahan Bahasa Indonesia">Baca Al Quran Online</a>,
+            <a href="/" title="Al Quran 30 juz lengkap">Al Quran 30 juz lengkap</a>,
+            <a href="/" title="Al Quran latin dan terjemah">Al Quran latin dan terjemah</a>,
+            <a href="/" title="Al Quran bahasa Indonesia">Al Quran bahasa Indonesia</a>,
+            <a href="/" title="Al Quran Terjemahan kementrian agama">Al Quran Terjemahan kementrian agama</a>,
+            <a href="/" title="Al Quran Tafsir">Al Quran dilengkapi dengan tafsir dari beberapa ulama seperti Tafsir Jalalayn dan Tafsir Quraish Shihab</a>.</p>
     </div>
     <div class="align-center">
         <p>
-            &copy; 2019 - Al Quran Terjemahan Bahasa Indonesia
+            &copy; 2019 - <a href="/" title="Al Quran Terjemahan Bahasa Indonesia">Al Quran Terjemahan Bahasa Indonesia</a>
             <br>
             Semoga website ini bermanfaat, amiinnn.
         </p>
         <p>
-            Jika ditemukan kesalahan, mohon menghubungi saya di email fatkulnurk[at]gmail[dot]com.
+            Jika ditemukan kesalahan, mohon menghubungi saya di email rudi@dibumi.com
         </p>
     </div>
 </div>
