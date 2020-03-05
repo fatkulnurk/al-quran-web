@@ -556,7 +556,9 @@
                 </div>
             </form>
             @if(\Illuminate\Support\Facades\Request::has('q'))
-                <script async src="https://cse.google.com/cse.js?cx=001126782360084613653:ynw6ibnnhcq"></script>
+                <script async src="https://cse.google.com/cse.js?cx=006244869116590388301:zglko8oisw3"></script>
+{{--                <div class="gcse-search"></div>--}}
+{{--                <script async src="https://cse.google.com/cse.js?cx=001126782360084613653:ynw6ibnnhcq"></script>--}}
                 <div class="gcse-searchresults-only"></div>
             @endif
         </div>
