@@ -17,7 +17,12 @@ class AyahController extends Controller
             ->where('number', $ayahNumber)
             ->first();
 
-        $surahAll = Surah::all();
+        $surahAll = Surah::select([
+            'name_alphabet',
+            'name_indonesia',
+            'number_of_surah',
+            'slug'
+        ])->get();
         return view('surah.ayah.detail', compact('ayah', 'surahAll'));
     }
 

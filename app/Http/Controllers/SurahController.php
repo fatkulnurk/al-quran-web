@@ -22,7 +22,12 @@ class SurahController extends Controller
             ->where('slug', $slug)
             ->first();
 
-        $surahAll = Surah::all();
+        $surahAll = Surah::select([
+            'name_alphabet',
+            'name_indonesia',
+            'number_of_surah',
+            'slug'
+        ])->get();
 
         return view('surah.detail', compact('surah', 'surahAll'));
     }
