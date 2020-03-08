@@ -59,11 +59,21 @@
 
     <div class="list">
         <h3>Daftar Surat</h3>
-        <ul>
+        <table class="table">
             @foreach($surahAll as $data)
-                <li><a href="{{ route('surah.show', $data->slug) }}" title="surat {{ $data->name_alphabet }} Terjemahan bahasa indonesia">{{ $data->name_alphabet }}</a> ({{ $data->name_indonesia }})</li>
+                @if ($loop->iteration % 2 != 0)
+                    <tr>
+                        <td>
+                            {{ $data->number_of_surah }}. <a href="{{ route('surah.show', $data->slug) }}" title="surat {{ $data->name_alphabet }} Terjemahan bahasa indonesia">{{ $data->name_alphabet }} ({{ $data->name_indonesia }})</a>
+                        </td>
+                        @else
+                            <td>
+                                {{ $data->number_of_surah }}. <a href="{{ route('surah.show', $data->slug) }}" title="surat {{ $data->name_alphabet }} Terjemahan bahasa indonesia">{{ $data->name_alphabet }} ({{ $data->name_indonesia }})</a>
+                            </td>
+                    </tr>
+                @endif
             @endforeach
-        </ul>
+        </table>
     </div>
 @endsection
 @push('footer')

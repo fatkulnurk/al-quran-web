@@ -77,7 +77,7 @@
 
     <div class="list">
         <h3>Daftar Surat</h3>
-        <ul>
+        <ul class="overflow-y-scroll-list">
             @foreach($surahAll as $data)
                 <li><a href="{{ route('surah.show', $data->slug) }}" title="surat {{ $data->name_alphabet }} Terjemahan bahasa indonesia">{{ $data->name_alphabet }}</a> ({{ $data->name_indonesia }})</li>
             @endforeach

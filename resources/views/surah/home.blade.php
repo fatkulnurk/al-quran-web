@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Latin dan Terjemahan Bahasa Indonesia')
+@section('title', 'Terjemahan Bahasa Indonesia')
 
 @section('content')
     <div class="list">
